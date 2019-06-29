@@ -1,0 +1,377 @@
+@import 'https://fonts.googleapis.com/css?family=Poppins:400,500,700';
+
+
+/*--animation setting--*/
+@-webkit-keyframes loadingAnim{
+    0%{
+        width: 0;
+    }
+    100%{
+        width: 100%;
+        -webkit-transform: translate(100%);
+        transform: translate(100%);
+    }
+}
+@keyframes loadingAnim{
+    0%{
+        width: 0;
+    }
+    100%{
+        width: 100%;
+        -webkit-transform: translate(100%);
+        transform: translate(100%);
+    }
+}
+@-webkit-keyframes loadingAnim_text{
+    0%{
+        opacity: 1;
+        color: #cba166;
+    }
+    50%{
+        color: #333;
+
+    }
+    100%{
+        opacity: .5;
+        color: #fff;
+    }
+}
+@keyframes loadingAnim_text{
+    0%{
+        opacity: 1;
+        color: #cba166;
+    }
+    50%{
+        color: #333;
+    }
+    100%{
+        opacity: .5;
+        color: #fff;
+    }
+}
+
+
+
+/*--settings--*/
+::-moz-selection{
+    background-color: rgba(0,105,255,.3);
+}
+::selection{
+    background-color: rgba(0,105,255,.3);
+}
+
+html{
+    font-family: '游ゴシック',YuGothic,'ヒラギノ角ゴ ProN W3','Hiragino Kaku Gothic ProN','メイリオ',Meiryo,sans-serif;
+    font-size: 14px;
+    line-height: 1.75;
+    position: relative;
+    
+    }
+    body{
+        width: 1000px;
+        height:1000px;
+        margin: 0;
+        
+    }
+img,
+iframe,
+object{
+    line-height: 1;
+    max-width: 100%;
+    height: auto;
+}
+
+a{
+    text-decoration: none;
+    color: #12aaaf;
+    outline: none;
+}
+a,
+a img{
+    transition: all .25s ease-in 0s;
+    border: none;
+    outline: none;
+}
+a button{
+    padding: 0;
+    border: none;
+    background: 0;
+}
+a:hover,
+a:active,
+a:focus{
+    color: #0b676a;
+}
+a img:hover,
+a img:active,
+a img:focus{
+    opacity: .87;
+}
+/*loading effects*/
+.loadingAnim{
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+.loadingAnim_line{
+    line-height: 1;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: inline-block;
+    overflow: hidden;
+    width: 150px;
+    height: 1.25em;
+    margin: auto;
+    transition: all .3s cubic-bezier(.785, .135, .15, .86) 0s;
+    transition-delay: .6s;
+    text-align: center;
+}
+.loadingAnim_line:after{
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
+    width: 0;
+    height: 100%;
+    margin: auto  auto auto 0;
+    content: ' ';
+    -webkit-animation: loadingAnim 2s ease-in-out .1s infinite normal backwards;
+    animation: loadingAnim 2s ease-in-out .1s infinite normal backwards;
+    background-color: #fff;
+    will-change: transform, width;
+}
+.loadingAnim_line:before{
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.25em;
+    font-weight: bold;
+    font-style: normal;
+    line-height: 1;
+    display: block;
+    content: 'LOADING';
+    -webkit-animation: loadingAnim_text 1s ease .1s infinite alternate both;
+    animation: loadingAnim_text 1s ease .1s infinite alternate both;
+    letter-spacing: .5em;
+    color: #fff;
+    will-change: opacity;
+}
+.loaded .loadingAnim_line{
+    overflow: hidden;
+    height: 0;
+}
+.loaded .loadingAnim_line:after,
+.loaded .loadingAnim_line:before{
+    -webkit-animation: none;
+    animation: none;
+}
+.loaded .loadingAnim_line:before{
+    content: 'LOADED!';
+}
+
+.loadingAnim:before,
+.loadingAnim:after{
+    line-height: 1;
+    position: fixed;
+    z-index: 99;
+    right: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 50%;
+    margin-right: auto;
+    margin-left: auto;
+    content: ' ';
+    transition: all .3s cubic-bezier(.785, .135, .15, .86) 0s;
+    transition-delay: .3s;
+    background-color: #7E06DB;
+
+}
+.loadingAnim:before{
+    top: 0;
+}
+.loadingAnim:after{
+    bottom: 0;
+}
+
+.loaded .loadingAnim:before{
+    height: 0;
+    -webkit-transform: translateY(-1%);
+    -ms-transform: translateY(-1%);
+    transform: translateY(-1%);
+}
+.loaded .loadingAnim:after{
+    height: 0;
+    -webkit-transform: translateY(1%);
+    -ms-transform: translateY(1%);
+    transform: translateY(1%);
+}
+
+/*--style--*/
+body{
+    background: url(../img/ap.jpg) center top ;
+    -webkit-background-size: cover;
+    background-size:  cover;
+   
+}
+@media screen and ( max-width: 768px ){
+    html:after{
+        padding-top: 100vh;
+        
+    }
+    body{
+        -webkit-background-size: cover;
+        background-size: cover;
+         
+       
+    }
+}
+
+.index{
+    padding-left: 50px;
+    padding-top: 10px;    
+    line-height: 1;
+    margin: 0;
+    z-index: 9; 
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    font-style: normal;
+    color: #111;
+    
+}
+.index_bbs{
+    margin: 0 0 10px 0;
+    font-size: 10vw;    
+    letter-spacing: -0.01em;        
+}
+.index_description{
+    font-size: 2.5vw;
+    letter-spacing: 0.085em;
+}
+
+.index p{
+    width:200;
+    height:45px;
+    font-size:40px;
+    float:right;
+    position:relative; top:-25px; left:584px ;  
+}
+
+.main{
+    
+    width: 1800px;
+    height:1000px;
+    margin:0;    
+}
+
+.left{
+    margin-left: 80px;
+    width:50%;
+    height:100%;
+    float:left;
+}
+.right{
+    
+     width:30%;
+     height:100%;
+     margin-top:65px;
+     padding-left: 150px;
+     display: inline-block;
+     
+    
+}  
+     
+footer{
+    width:101%;
+    height: 80px;
+     bottom:0;    
+}
+@media screen and ( max-width: 768px ){
+    .index_wow{
+        font-size: 40px;    
+    }
+    .index_description{
+        font-size: 10px;
+    }
+}
+
+
+ul {font-size:18px;
+  border: solid 2px black;
+  padding: 0.5em;
+  position: relative;
+ margin:0;
+}
+ul li {
+  line-height: 1.5;
+  padding: 0.5em 0 0.5em 1.4em;
+  border-bottom: dashed 1px black;
+  list-style-type: none!important;
+}
+ul li:last-of-type {
+  border-bottom: none;
+}
+ul li:before {
+  /*リスト内のアイコン*/
+  font-family: "Font Awesome 5 Free";
+  content: "\f138";/*アイコン種類*/
+  position: absolute;
+  left : 0.5em; /*左端からのアイコンまで*/
+  color: black; /*アイコン色*/
+}
+ul li:after {
+  /*タイトルタブ*/
+  background: black;
+  color: #fff;
+  font-weight: bold;
+  position: absolute;
+  left: -2px;
+  bottom: 100%;
+  padding: 1px 7px;
+  content: "POINT";/*タブの文字*/
+  letter-spacing: 0.05em;/*字間*/
+}
+.box {
+    size:10px;
+    margin: 2em 0;
+    background: #f1f1f1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.22);
+}
+.box .box-title {
+    
+    font-size:1.2em;
+    background: black;
+    padding: 4px;
+    text-align: center;
+    color: #FFF;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+}
+.box p {
+    padding: 8px 40px;
+    margin: 0;
+}
+p{
+    font-size:15px;
+}
+iframe  {
+    margin-top:50px;
+    margin-left:80px;
+    
+    width: 1200px;
+    height: 900px;
+    border-radius: 10px 20px 30px 40px;
+    border-color:aqua;
+}
+
